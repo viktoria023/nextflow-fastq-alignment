@@ -1,6 +1,5 @@
-process CALL_VARIANTS {
+process CALL_VARIANTS_LONG {
     tag "${sample}"
-    cpus 8
     publishDir "${params.outputDir}/variants", mode: 'copy'
 
     input:
