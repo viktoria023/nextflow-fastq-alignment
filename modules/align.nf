@@ -8,6 +8,7 @@ process ALIGN {
 
     output:
     tuple val(sample), path("${sample}.aligned.bam"), path("${sample}.aligned.bam.bai"), emit: bam
+    path "${sample}.flagstat.txt", emit: stats
 
     script:
     def preset = params.readType == "short" ? "sr" : "map-ont"
