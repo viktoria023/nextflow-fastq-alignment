@@ -1,9 +1,9 @@
 # nextflow-fastq-alignment
-Repository for aligning specified FASTQ reads from M. tuberculosis samples to a reference genome. Supported are long reads (ONT-Nanopore) and paired short reads (Illumina).
+Repository for aligning specified FASTQ reads from M. tuberculosis samples to a reference genome. Supported are long reads (ONT-Nanopore) and paired short reads (Illumina). Requires Nextflow and Conda to be installed.
 
 **Installation**
 ```
-git clone <repository-url>
+git clone https://github.com/viktoria023/nextflow-fastq-alignment.git
 cd nextflow-fastq-alignment
 ```
 
