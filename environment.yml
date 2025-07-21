@@ -1,12 +1,13 @@
 name: mtb-consensus
 channels:
-  - conda-forge
   - bioconda
+  - conda-forge
 dependencies:
   - python=3.9
   - nextflow
   - minimap2
   - samtools>=1.17
   - bcftools>=1.17
+  - freebayes
   - longshot
   - htslib>=1.17
