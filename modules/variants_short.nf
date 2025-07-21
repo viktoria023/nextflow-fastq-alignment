@@ -1,6 +1,6 @@
 process CALL_VARIANTS_SHORT {
     tag "${sample}"
-    publishDir "${params.outputDir}/variants", mode: 'copy', pattern: "*.bam*"
+    publishDir "${params.outputDir}/variants", mode: 'copy'
 
     input:
     tuple val(sample), path(bam), path(bai)
