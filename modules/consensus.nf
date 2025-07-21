@@ -1,6 +1,5 @@
 process GENERATE_CONSENSUS {
     tag "${sample}"
-    cpus 4
     publishDir "${params.outputDir}/consensus", mode: 'copy'
 
     input:

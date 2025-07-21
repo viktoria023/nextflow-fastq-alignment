@@ -1,6 +1,5 @@
 process ALIGN {
     tag "${sample}"
-    cpus 8
     publishDir "${params.outputDir}/alignments", mode: 'copy'
 
     input:
