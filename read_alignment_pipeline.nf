@@ -16,6 +16,31 @@ params.referenceFasta = "./reference/H37Rv.fasta"
 params.outputPrefix = "MTB_consensus"
 params.readType = null
 
+// Validate required parameters
+if (!params.readType) {
+    error """
+    ERROR: --readType parameter is required!
+    
+    Please specify either:
+      --readType short    (for Illumina/short reads)
+      --readType long     (for Nanopore/long reads)
+    
+    Example:
+      nextflow run read_alignment_pipeline.nf --readType short --inputFastq ./data --referenceFasta ./ref.fasta --outputPrefix sample1
+    """.stripIndent()
+}
+
+if (!(params.readType in ['short', 'long'])) {
+    error """
+    ERROR: Invalid readType '${params.readType}'
+    
+    Valid options are:
+      --readType short
+      --readType long
+    """.stripIndent()
+}
+
+
 workflow {
     // Channels
     ch_reference = Channel.fromPath(params.referenceFasta).first() // Allows running multiple fastqs with the same reference
