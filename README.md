@@ -28,7 +28,7 @@ nextflow run read_alignment_pipeline.nf \
 
 **Pipeline structure**
 | Step  | Tool for short reads | Tool for long reads |
-| ------------- | ------------- |
+| ------------- | ------------- | ------------- |
 | Alignment  | minimap2 `-ax sr`  | minimap2 `-ax map-ont` |
 | Variant Calling  | FreeBayes  | longshot |
 | Consensus  | bcftools consensus  | bcftools consensus |
