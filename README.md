@@ -48,3 +48,19 @@ fastq_files/
 | Variant Calling  | FreeBayes  | longshot |
 | Consensus  | bcftools consensus  | bcftools consensus |
 
+**Minimal testing setup**
+A minimal integration testing script was added, allowing to test run the pipeline for both read types using minimal synthetic test data and reference (~16KB):
+
+```bash
+# Run automated tests for both read types
+chmod +x test_pipeline.sh
+./test_pipeline.sh
+```
+
+Expected output:
+```
+📊 TEST SUMMARY
+===============
+✅ Short reads: PASSED
+✅ Long reads: PASSED
+```
