@@ -42,10 +42,9 @@ if (!(params.readType in ['short', 'long'])) {
     """.stripIndent()
 }
 
-
 workflow {
     // Channels
-    ch_reference = Channel.fromPath(params.referenceFasta).first() // Allows running multiple fastqs with the same reference
+    ch_reference = Channel.value(file(params.referenceFasta))
 
     ch_fastq = params.readType == 'short' ? 
     Channel.fromFilePairs("${params.inputFastq}/*_{1,2}.{fastq.gz}", size: 2, flat: false)
