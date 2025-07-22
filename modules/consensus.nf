@@ -18,11 +18,8 @@ process GENERATE_CONSENSUS {
     bgzip -c ${vcf} > ${vcf}.gz
     tabix -p vcf ${vcf}.gz
 
-    # Set VCF file variable
-    VCF_FILE="${vcf}.gz"
-
     # Generate consensus using bcftools
-    bcftools consensus -f ${reference} -o ${params.outputPrefix}_${sample}.consensus.fasta \$VCF_FILE
+    bcftools consensus -f ${reference} -o ${params.outputPrefix}_${sample}.consensus.fasta ${vcf}.gz
     
     # Update header for clarity
     sed -i '' '1s/.*/>MTB_consensus_${sample}/' ${params.outputPrefix}_${sample}.consensus.fasta

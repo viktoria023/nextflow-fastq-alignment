@@ -12,13 +12,8 @@ process ALIGN {
 
     script:
     def preset = params.readType == "short" ? "sr" : "map-ont"
-    def read_input = ""
+    def read_input = params.readType == "short" ? "${reads[0]} ${reads[1]}" : "${reads}"
 
-    if (params.readType == "short") {
-        read_input = "${reads[0]} ${reads[1]}"
-    } else {
-        read_input = "${reads}"
-    }
     """
     # Align reads using minimap2 using the preset for short or long reads
     minimap2 -ax ${preset} -t ${task.cpus} ${reference} ${read_input} | \\
