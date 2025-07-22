@@ -10,23 +10,32 @@ include { CALL_VARIANTS_SHORT } from './modules/variants_short.nf'
 include { GENERATE_CONSENSUS } from './modules/consensus.nf'
 
 // Define parameters for input and output paths
-params.inputFastq = "./fastq_files"
-params.outputDir = "./results"
-params.referenceFasta = "./reference/H37Rv.fasta"
-params.outputPrefix = "MTB_consensus"
+params.inputFastq = null
+params.referenceFasta = null
 params.readType = null
+params.outputDir = "./results"
+params.outputPrefix = "MTB_consensus"
 
 // Validate required parameters
-if (!params.readType) {
+if (!params.readType || !params.inputFastq || !params.referenceFasta) {
     error """
-    ERROR: --readType parameter is required!
+    ERROR: Missing required parameters!
     
-    Please specify either:
-      --readType short    (for Illumina/short reads)
-      --readType long     (for Nanopore/long reads)
+    Required parameters:
+      --readType         'short' or 'long'
+      --inputFastq       Directory containing FASTQ files
+      --referenceFasta   Path to reference genome FASTA
+    
+    Optional parameters:
+      --outputDir        Output directory (default: ./results)
+      --outputPrefix     Prefix for output files (default: MTB_consensus)
     
     Example:
-      nextflow run read_alignment_pipeline.nf --readType short --inputFastq ./data --referenceFasta ./ref.fasta --outputPrefix sample1
+      nextflow run read_alignment_pipeline.nf \\
+        --readType short \\
+        --inputFastq ./data/fastq \\
+        --referenceFasta ./reference/H37Rv.fasta \\
+        --outputPrefix sample1
     """.stripIndent()
 }
 
