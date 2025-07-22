@@ -9,13 +9,6 @@ include { CALL_VARIANTS_LONG } from './modules/variants_long.nf'
 include { CALL_VARIANTS_SHORT } from './modules/variants_short.nf'
 include { GENERATE_CONSENSUS } from './modules/consensus.nf'
 
-// Define parameters for input and output paths
-params.inputFastq = null
-params.referenceFasta = null
-params.readType = null
-params.outputDir = "./results"
-params.outputPrefix = "MTB_consensus"
-
 // Validate required parameters
 if (!params.readType || !params.inputFastq || !params.referenceFasta) {
     error """
